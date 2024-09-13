@@ -18,4 +18,4 @@
     - Generate an executable .jar file called **Lab2.jar**
     - Place **Lab2.jar** at the root of the project
 
-Remove the dashes on this line when lab 2 is ready to be graded (and commit and push): D-O-N-E-2
+Remove the dashes on this line when lab 2 is ready to be graded (and commit and push): DONE2
