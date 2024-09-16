@@ -131,9 +131,13 @@ public class Driver {
      */
 
     private static void report(int numDice, int[] rolls, int max) {
-        final int scale = (int) (max / 10.0);
+        final int totalRolls = IntStream.of(rolls).sum();
+        final int scaleMultiplier = 10;
+        final double scale = max < scaleMultiplier ?
+                (max / (double) totalRolls) :
+                (max / (double) scaleMultiplier);
         int maxPaddingLength = (int) Math.floor(Math.log10(rolls.length-1)) + 1;
-        int maxResultPaddingLength = (int) Math.floor(Math.log10(IntStream.of(rolls).sum())) + 1;
+        int maxResultPaddingLength = (int) Math.floor(Math.log10(totalRolls)) + 1;
 
         for (int i = 0; i < rolls.length; i++) {
             int numLength = (int) Math.floor(Math.log10(i+numDice)) + 1;
@@ -150,7 +154,7 @@ public class Driver {
             }
 
             int rollNumber = i + numDice;
-            int starCount = rolls[i] / scale;
+            int starCount = (int) ((rolls[i] / scale));
             String stars = "*".repeat(starCount);
 
             System.out.printf("%d%s: %d %s%s\n",
